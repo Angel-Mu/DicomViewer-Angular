@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html lang="en" ng-app="cornerstoneApp" class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html lang="en" ng-app="cornerstoneApp" class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html lang="en" ng-app="cornerstoneApp" class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html lang="en" ng-app="cornerstoneExample" class="no-js">
+<!--<![endif]-->
+
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-touch-fullscreen" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">
+	<title>Angular 1 Cornerstone Example</title>
+	<meta name="description" content="">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Arimo:400,700,400italic">
+	<link rel="stylesheet" href="./css/fonts/linecons/css/linecons.css">
+	<link rel="stylesheet" href="./css/fonts/fontawesome/css/font-awesome.min.css">
+	<link rel="stylesheet" href="./css/bootstrap.css">
+	<link rel="stylesheet" href="./css/xenon-core.css">
+	<link rel="stylesheet" href="./css/xenon-forms.css">
+	<link rel="stylesheet" href="./css/xenon-components.css">
+	<link rel="stylesheet" href="./css/sicem.css">
+	<link rel="stylesheet" href="./css/xenon-skins.css">
+	<link rel="stylesheet" href="./css/custom.css">
+	<link rel="stylesheet" href="./css/dialogs.css">
+	<link rel="stylesheet" href="./css/colors.css">
+	<link rel="stylesheet" href="./css/extras.css">
+	<style>
+	.container-dicom {
+		width: 100%;
+		height: 500px;
+		position: absolute;
+		display: block;
+		background-color: #fff
+	}
+	
+	.loader-dicom {
+		margin: auto;
+		display: block;
+		vertical-align: middle;
+		text-align: center;
+		width: 130px;
+		height: 130px;
+		top: 0;
+		bottom: 0;
+		left: 0;
+		right: 0;
+		position: absolute;
+	}
+	
+	.gallery {
+		width: 50%;
+		display: inline-block;
+		padding-top: 10px;
+		background: #eeeeee;
+	}
+	
+	.thumb {
+		background: #eeeeee;
+		padding-top: 10px;
+	}
+	
+	.icon-container {
+		text-align: center;
+		margin: 0 auto;
+		height: 90px;
+		width: 95px;
+		background-color: #fff;
+	}
+	
+	.gallery> .icon-container > .loader,
+	.thumb > .icon-container > .loader {
+		position: relative;
+		top: calc(50% - 20px);
+		font-size: 25px;
+		color: #68C8C5;
+		/* 50% - 3/4 of icon height */
+	}
+	
+	.gallery> .icon-container > .progress-text,
+	.thumb > .icon-container > .progress-text {
+		position: relative;
+		top: calc(50% - 20px);
+		color: #ee4195;
+		/* 50% - 3/4 of icon height */
+	}
+	
+	a.list-group-item {
+		background-color: #f2f1f1;
+		color: #ee4195;
+	}
+	
+	a.list-group-item.active,
+	.list-group-item.active .list-group-item.active:hover,
+	.list-group-item.active:focus {
+		background-color: #ee4195;
+		border-color: #ee4195;
+		color: #f2f1f1;
+	}
+	
+	.text-pinksicem {
+		color: #ee4195;
+	}
+	
+	.text-greensicem {
+		color: #68C8C5;
+	}
+	</style>
+</head>
+
+<body ng-controller="MainCtrl">
+	<div class="jumbotron jumbotron-popup" style="padding: 8px 25px !important;margin-bottom: 0px;">
+		<div ng-init="enable_dicom = true">
+			<div class="panel-heading" style="background-color: #68C8C5;">
+				<div class="row">
+					<div class="col-sm-9">
+						<p class="text-sm no-margin text-white">
+							<span class="text-bold">{{patient.fullname}}</span> - <span class="text-thin">{{patient.accession_number}}</span>
+						</p>
+						<p class="no-margin text-white" style="line-height: 1;">
+							<span class="text-bold text-small block">Campaña</span> - <span class="text-thin text-small">{{data.campaign}}</span>
+							<br>
+							<span class="text-small text-bold">Estudio:</span> <span class="text-thin text-small">{{study_info.type}} {{study_info.technique}}</span>
+							<br>
+							<span class="text-small text-bold">Realizado:</span> <span class="text-thin text-small">{{study_info.study_datetime | date:'short'}}</span>
+						</p>
+					</div>
+					<div class="col-sm-3 text-right">
+						<a class="btn btn-xs btn-danger" href="javascript:window.open('','_self').close();" style="background-color: #ee4195;"> Cerrar <i class="fa fa-times"></i></a>
+						<br>
+						<span class="help-block">
+						<label class="text-white"  style="font-weight: bold;">
+							<input type="checkbox" ng-model="enable_dicom" ng-click="enable_dicom=!enable_dicom" class="ng-pristine ng-valid"> Cambiar a visor DICOM
+						</label>
+					</span>
+						<span class="help-block text-white" style="font-weight: thin;">
+						Total de imágenes {{(imagesList.length)?imagesList.length:0}}
+					</span>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="panel panel-default" style="margin-bottom: 0px;">
+			<div class="panel-body" style="padding: 0px 0px;">
+				<div class="row">
+					<div class="text-center" ng-class="{'col-sm-8 col-sm-offset-2':!enable_dicom,'col-sm-3':enable_dicom}">
+						<div class="row text-center">
+							<div ng-class="{'gallery':!enable_dicom,'thumb':enable_dicom}" ng-repeat="image in imagesList" ng-if="imagesList.length>0">
+								<div class="icon-container" id="{{image.image_id}}_load">
+									<i class="fa fa-refresh fa-spin loader" id="{{image.image_id}}_spin"></i>
+									<br>
+									<span class="text-info progress-text" id="{{image.image_id}}_progress"></span>
+									<a href="" class="text-info progress-text text-danger" id="{{image.image_id}}_refresh" ng-click="reload(image)" style="display:none">
+									Intentar nuevamente
+								</a>
+								</div>
+								<!-- <img src="./images/loader.gif" id="{{image.image_id}}_load" style="width:90px; height: 90px;"> -->
+								<div ng-if="!image.reload">
+									<cornerstone-preview style="cursor: pointer;" image-id="{{image.image_id}}" id="{{image.image_id}}" ng-click="(enable_dicom)?changeSelected(image.image_id):''"></cornerstone-preview>
+								</div>
+								<div ng-class="(enable_dicom)?(image.image_id == selected_image)?'text-pinksicem':'text-greensicem':'text-muted'">
+									<span ng-style="{'text-decoration':(image.image_id != selected_image && enable_dicom)?'underline':''}">{{image.name}}</span>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="col-sm-9" ng-if="selected_image && enable_dicom">
+						<div class="row">
+							<div class="col-sm-11 text-center">
+								<div id="{{selected_image}}_dicom" class="container-dicom">
+									<div style="padding-top: 100%"></div>
+									<img src="./images/loader.gif" class="loader-dicom">
+								</div>
+								<cornerstone-image ng-model="selected_image" image-id="{{selected_image}}" class="flex-item"></cornerstone-image>
+							</div>
+							<div class="col-sm-1">
+								<div class="list-group text-center">
+									<a href="" style="padding: 5px;" class="list-group-item" ng-click="active_btn='wwwc';activateWWWC();" ng-class="{'active':(active_btn == 'wwwc')}">
+										<i class="fa fa-sun-o fa-2x" style="display:block;line-height: 2;" tooltip="Filtro/Brillo" tooltip-placement="left"></i>
+									</a>
+									<a href="" style="padding: 5px;" class="list-group-item" ng-click="active_btn='invert';toggleInvert();" ng-class="{'active':(active_btn == 'invert')}"  >
+										<i class="fa fa-adjust fa-2x" style="display:block;line-height: 2;" tooltip="Invertir color" tooltip-placement="left"></i>
+									</a>
+									<a href="" style="padding: 5px;" class="list-group-item" ng-click="active_btn='zoom';activateZoom();" ng-class="{'active':(active_btn == 'zoom')}"  >
+										<i class="fa fa-search fa-2x" style="display:block;line-height: 2;" tooltip="Zoom" tooltip-placement="left"></i>
+									</a>
+									<a href="" style="padding: 5px;" class="list-group-item" ng-click="active_btn='pan';activateMove();" ng-class="{'active':(active_btn == 'pan')}"  >
+										<i class="fa fa-arrows fa-2x" style="display:block;line-height: 2;" tooltip="Mover" tooltip-placement="left"></i>
+									</a>
+									<!-- <a href="" style="padding: 5px;" class="list-group-item" ng-click="active_btn='highlight';activateHighlight();" ng-class="{'active':(active_btn == 'highlight')}"  >
+									<i class="fa fa-crosshairs fa-2x" style="display:block;line-height: 2;" tooltip="Enfocar" tooltip-placement="left"></i>
+								</a> -->
+								</div>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-sm-12 text-center">
+								<span class="" style="color:#ff69b4;">¡Visor DICOM Web no diseñado para uso diagnóstico!</span>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- <div ng-view class="flex">
+		<div ng-repeat="image in imagesList" ng-if="imagesList.length>0" class="thumb">
+			<cornerstone-preview image-id="{{image.image_id}}" id="{{image.image_id}}" ng-click="changeSelected(image.image_id)"></cornerstone-preview>
+		</div>
+		<cornerstone-image ng-model="selected_image" image-id="{{selected_image}}" class="flex-item"></cornerstone-image>
+	</div> -->
+	<script src="../node_modules/angular/angular.js"></script>
+	<script src="../node_modules/jquery/dist/jquery.js"></script>
+	<script src="../node_modules/cornerstone/dist/cornerstone.js"></script>
+	<script src="../node_modules/cornerstoneMath/dist/cornerstoneMath.js"></script>
+	<script src="../node_modules/cornerstoneTools/dist/cornerstoneTools.js"></script>
+	<script src="../node_modules/cornerstoneTools/examples/hammer.min.js"></script>
+	<script src="../bower_components/cornerstoneWADOImageLoader/dist/cornerstoneWADOImageLoader.js"></script>
+	<script src="../bower_components/dicomParser/dist/dicomParser.js"></script>
+	<script src="js/dataDictionary.js"></script>
+	<script src="js/uids.js"></script>
+	<script src="js/util/util.js"></script>
+	<script src="js/app.js"></script>
+	<script src="js/controllers/mainctrl.js"></script>
+	<script src="js/directives/cornerstoneImage.js"></script>
+	<script src="js/directives/cornerstonePreview.js"></script>
+	<script src="js/exampleImageIdLoader.js"></script>
+</body>
+
+</html>

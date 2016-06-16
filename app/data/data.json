@@ -1,0 +1,35 @@
+{
+	"_id": "20165621105622179",
+	"radiologist": "54c82e1cfb0a8a9bef000004",
+	"radiologist_fullname": "CLAUDIA",
+	"creation_date": "2016-04-22T00:21:59.166Z",
+	"gateway_info": {
+		"received_datetime": "2016-04-21T15:56:22.180Z",
+		"sended_to_pacs_datetime": "2016-04-21T12:32:21.532Z",
+		"bytes_total_size": 109065522,
+		"bytes_sended_to_pacs": 109065522,
+		"total_images": 4,
+		"total_images_sended": 4,
+		"transfer_is_complete": true,
+		"path": "http://localhost/RestService/RestServiceImpl.svc/xml/C|CarpetaPrueba|20AN13287|20AN13287.RCC.dcm|20AN13287.LCC.dcm|20AN13287.RMLO.dcm|20AN13287.LMLO.dcm"
+	},
+	"study_info": {
+		"type": "MG",
+		"technique": "Screening-Bilateral Mammography",
+		"study_datetime": "2016-04-19T17:00:00Z"
+	},
+	"patient": {
+		"accession_number": "20AN13287",
+		"fullname": "FLORES HERNANDEZ ANGELINA",
+		"birthdate": "1962-07-21T17:00:00Z",
+		"age": "54",
+		"surname_mother": "HERNANDEZ",
+		"surname_father": "FLORES",
+		"given_name": "ANGELINA"
+	},
+	"unit_identification": {
+		"truck": "CM20",
+		"truck_plate": "4HU7905"
+	},
+	"__v": 0
+}

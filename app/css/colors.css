@@ -1,0 +1,37 @@
+.main_color_text{
+	color: #ff69b4;
+}
+/*Error colors*/
+.errorColorText{
+	color:#cc3f44;
+}
+.errorColorBorder{
+	border-color:#cc3f44;
+}
+.errorColorBorder:focus{
+	border-color:#cc3f44;
+}
+/*Warning colors*/
+.warningColorText{
+	color: #f39c12;
+}
+.warningColorText:focus{
+	color: #f39c12;
+}
+/*Background for filters*/
+.backgroundFilter{
+	background: #F8F8F8;
+}
+.superMutedText{
+	color: #bfbfbf;
+}
+.subtitleText{
+	color: #ff69b4;
+}
+.userDown{
+	color: #27ae60;
+
+}
+.userUp{
+	color: #c0392b;
+}

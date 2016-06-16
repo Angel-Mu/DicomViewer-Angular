@@ -1,0 +1,220 @@
+/*Margin top minus*/
+.m-t-m-1{
+	margin-top: -1px;
+}
+
+.m-t-m-2{
+	margin-top: -2px;
+}
+
+.m-t-m-5{
+	margin-top: -5px;
+}
+
+.m-t-m-10{
+	margin-top: -10px;
+}
+
+.m-t-m-15{
+	margin-top: -15px;
+}
+
+.m-t-m-20{
+	margin-top: -20px;
+}
+/*Margin left*/
+.m-l-3{
+	margin-left: 3px;
+}
+.m-l-5{
+	margin-left: 5px;
+}
+
+.m-l-10{
+	margin-left: 10px;
+}
+
+.m-l-15{
+	margin-left: 15px;
+}
+
+.m-l-20{
+	margin-left: 20px;
+}
+/*Margin bottom*/
+.m-b-3{
+	margin-bottom: 3px;
+}
+.m-b-5{
+	margin-bottom: 5px;
+}
+
+.m-b-10{
+	margin-bottom: 10px;
+}
+
+.m-b-15{
+	margin-bottom: 15px;
+}
+
+.m-b-20{
+	margin-bottom: 20px;
+}
+.m-b-25{
+	margin-bottom: 25px;
+}
+/*Margin top*/
+.m-t-3{
+	margin-top: 3px;
+}
+.m-t-5{
+	margin-top: 5px;
+}
+
+.m-t-10{
+	margin-top: 10px;
+}
+
+.m-t-15{
+	margin-top: 15px;
+}
+
+.m-t-20{
+	margin-top: 20px;
+}
+.m-t-25{
+	margin-top: 25px;
+}
+.m-t-35{
+	margin-top: 35px;
+}
+/*Text align*/
+.t-a-l{
+	text-align: left;
+}
+
+.t-a-c{
+	text-align: center;
+}
+
+.t-a-r{
+	text-align: right;
+}
+/*Padding top*/
+.p-t-5{
+	padding-top: 5px;	
+}
+.p-t-10{
+	padding-top: 10px;	
+}
+.p-t-15{
+	padding-top: 15px;	
+}
+/*Padding*/
+.p-5{
+	padding: 5px;
+}
+.p-10{
+	padding: 10px;
+}
+/*Margin minus*/
+.m-m-10{
+	margin: -10px;
+}
+.m-m-15{
+	margin: -15px;
+}
+.m-m-20{
+	margin: -20px;
+}
+/*Text align*/
+.fs-5{
+	font-size: 9px;
+}
+.fs-7{
+	font-size: 9px;
+}
+.fs-9{
+	font-size: 9px;
+}
+
+.fs-11{
+	font-size: 11px;
+}
+
+.fs-13{
+	font-size: 13px;
+}
+
+.fs-15{
+	font-size: 15px;
+}
+
+.fs-18{
+	font-size: 18px;
+}
+
+.fs-20{
+	font-size: 20px;
+}
+.fs-23{
+	font-size: 23px;
+}
+/*Cursor options*/
+.like_button{
+	cursor: pointer;
+	margin: 0 2px 0 2px;
+}
+/*Hidding inputs file*/}
+.hide {
+    display: none;
+}
+.customFileButton{
+    background: #ff69b4;
+    color: white;
+    display: inline-block;
+    padding: 6px 12px;
+    cursor: pointer;
+}
+.customFileButton:hover{
+	background: #FF5FAF;
+}
+.customFileButton:active{
+	box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.2);
+}
+/*Div posistion*/
+.toLeft{
+	float: left;
+}
+.toRight{
+	float: right;
+}
+/*No padding no margin*/
+.noPaddNoMar{
+	padding: 0;
+	margin: 0;
+}
+.imgDescription {
+  transition: .4s;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: black;
+  color: #fff;
+  visibility: hidden;
+  opacity: 0;
+}
+
+.imgWrap {
+  position: relative;
+
+}
+
+.imgWrap:hover .imgDescription {
+	
+  visibility: visible;
+  opacity: 0.5;
+
+}

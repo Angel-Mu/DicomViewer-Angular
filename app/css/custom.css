@@ -1,0 +1,129 @@
+/**
+ *
+ * Apply your custom CSS here
+ *
+*/
+
+body {	
+}
+
+a {
+}
+
+
+.spinner {
+  display: inline-block;
+  opacity: 0;
+  max-width: 0;
+
+  -webkit-animation: spin .8s infinite linear;
+  -moz-animation: spin .8s infinite linear;
+  -o-animation: spin .8s infinite linear;
+  animation: spin .8s infinite linear;
+  -webkit-transform-origin: 50% 50%;
+  transform-origin:50% 50%;
+  -ms-transform-origin:50% 50%; /* IE 9 */
+}
+@-moz-keyframes spin {
+  from {
+  -moz-transform: rotate(0deg);
+  }
+  to {
+  -moz-transform: rotate(360deg);
+  }
+}
+
+@-webkit-keyframes spin {
+  from {
+  -webkit-transform: rotate(0deg);
+  }
+  to {
+  -webkit-transform: rotate(360deg);
+  }
+}
+
+@keyframes spin {
+  from {
+  transform: rotate(0deg);
+  }
+  to {
+  transform: rotate(360deg);
+  }
+}
+.has-spinner.active {
+  cursor:progress;
+}
+.has-spinner.active .spinner {
+  opacity: 1;
+  max-width: 50px; /* More than it will ever come, notice that this affects on animation duration */
+}
+
+.rotate90 {
+    -webkit-transform: rotate(90deg);
+    -moz-transform: rotate(90deg);
+    -o-transform: rotate(90deg);
+    -ms-transform: rotate(90deg);
+    transform: rotate(90deg);
+}
+
+.login-page {
+	
+	background-image: url('../images/sicem/bg-sicem.png');
+	background-repeat: repeat-y;
+	background-size: contain;	
+}
+
+/*
+.sidebar-menu-inner {
+	
+	background-image: url('../images/sicem/bg-sicem.png');
+	background-repeat: repeat-y;
+	background-size: contain;	
+}
+.sidebar-menu {
+	
+	background-image: url('../images/sicem/bg-sicem.png');
+	background-repeat: repeat-y;
+	background-size: contain;	
+}
+*/
+
+.sidebar-menu{
+	/*background-color: #68c8c5;*/
+	background-image: url('../images/sicem/bg-sicem.png');
+	background-repeat: repeat-y;
+	/*color:#656565; */
+}
+.sidebar-menu .main-menu a{
+	border-color: #F2F1F1; 
+	color: #ee4195;
+}
+.sidebar-menu .main-menu a:hover{
+	color: #58585a ;
+}
+.sidebar-menu .main-menu li.active > a{
+	color: #ffffff ;
+	background-color: #ee4195;
+}
+.logo-env{
+	
+	background-image: url('../images/sicem/bg-sicem.png');
+	background-repeat: repeat-y;
+	background-size: contain;	
+}
+.sidebar-menu .logo-env{
+	border-color: #B5B4B5;
+	
+}
+
+.page-container .main-content .page-title{
+	color: #ffffff;
+	background-color: #68C8C5;
+}
+
+.page-container .main-content .page-title .title-env .title + p{
+	color: #FFFFFF;
+}
+
+
+
