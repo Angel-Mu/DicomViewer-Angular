@@ -33,7 +33,7 @@ angular.module("cornerstoneExample")
 					type: "MG"
 				},
 				gateway_info: {
-					path: "http://localhost/RestService/RestServiceImpl.svc/xml/C|RouterPacs|26AN10506|26AN10506.RCC.dcm|26AN10506.LCC.dcm|26AN10506.RMLO.dcm|26AN10506.LMLO.dcm",
+					path: "http://localhost/RestService/RestServiceImpl.svc/xml/C|RouterPacs|26AN10506|26AN10506.LCC2.jpeg|26AN10506.LMLO3.jpeg|26AN10506.RCC1.jpeg|26AN10506.RMLO4.jpeg",
 					transfer_is_complete: true,
 					total_images_sended: 7,
 					total_images: 7,
